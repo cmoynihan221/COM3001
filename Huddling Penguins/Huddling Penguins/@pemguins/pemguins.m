@@ -4,6 +4,8 @@ classdef pemguins % declares pemguins object
     
     properties
         body_temperature;
+        postion;
+        heat_transfer;
     end
     
     methods
