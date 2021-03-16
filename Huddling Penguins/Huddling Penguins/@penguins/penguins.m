@@ -23,16 +23,16 @@ classdef penguins % declares pemguins object
                  	p.body_temperature=[];
                     p.postion=[];
                     p.speed=[];
-                case 1                         %input is already a fox, so just return!
+                case 1                         %input is already a penguin, so just return!
                     if (isa(varargin{1},'penguin'))		
                         p=varargin{1};
                     else
                         error('Input argument is not a fox')
                     end
-                case 5                          %create a new fox (currently the only constructor method used)
+                case 5                          %create a new penguin (currently the only constructor method used)
                   	p.body_temperature =varargin{1};
                     p.postion=varargin{2};
-                    p.speed=varargin{3};       %number of iterations since fox last reproduced.
+                    p.speed=varargin{3};       %number of iterations since penguin last reproduced.
                 otherwise
                     error('Invalid no. of input arguments for fox')
             end
