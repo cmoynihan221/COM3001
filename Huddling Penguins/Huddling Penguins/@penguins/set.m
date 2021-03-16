@@ -6,8 +6,6 @@ case 'pos'
     c.pos=val; 
 case 'speed'
    c.speed=val; 
-case 'heat_transfer'
-   c.heat_transfer=val; 
 case 'body_temperature'
    c.body_temperature=val; 
 otherwise 
