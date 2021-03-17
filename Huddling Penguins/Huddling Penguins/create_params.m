@@ -9,5 +9,7 @@ function create_params
 global PARAM
     PARAM.P_SPD=5;
     PARAM.P_TEM=38;
+    PARAM.P_MINTEM=25;
+    PARAM.P_MAXTEM=40;
     
     
