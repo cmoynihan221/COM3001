@@ -4,7 +4,7 @@ classdef penguins % declares pemguins object
     
     properties
         body_temperature;
-        postion;
+        pos;
         speed;
     end
     
