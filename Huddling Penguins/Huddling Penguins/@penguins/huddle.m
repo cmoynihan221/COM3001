@@ -50,4 +50,6 @@ function [agt]= huddle(agt,cn)
     
     % min distance
     md = val/length(px);
+
+    dir=((x(i(1))-pos.x),y(i(1)-pos.y)/(((x(i(1))-pos.x)^2,y(i(1)-pos.y)^2);
     
