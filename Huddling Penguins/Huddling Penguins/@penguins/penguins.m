@@ -27,14 +27,14 @@ classdef penguins % declares pemguins object
                     if (isa(varargin{1},'penguin'))		
                         p=varargin{1};
                     else
-                        error('Input argument is not a fox')
+                        error('Input argument is not a penguin')
                     end
-                case 5                          %create a new penguin (currently the only constructor method used)
+                case 3                          %create a new penguin (currently the only constructor method used)
                   	p.body_temperature =varargin{1};
                     p.postion=varargin{2};
                     p.speed=varargin{3};       %number of iterations since penguin last reproduced.
                 otherwise
-                    error('Invalid no. of input arguments for fox')
+                    error('Invalid no. of input arguments for penguin')
             end
         end
     end

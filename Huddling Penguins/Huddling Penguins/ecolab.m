@@ -10,8 +10,7 @@ function ecolab(size,np,nsteps,fmode,outImages)
 %ecolab(size,nr,nf,nsteps)
 %size = size of model environmnet in km (sugested value for plotting
 %purposes =50)
-%nr - initial number of rabbit agents
-%nf - initial number of fox agents
+%np - initial number of penguins agents
 %nsteps - number of iterations required
 
 %definition of global variables:
