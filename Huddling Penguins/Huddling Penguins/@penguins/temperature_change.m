@@ -14,11 +14,11 @@ function [agt,temperature_change] = temperature_change(agt,cn)
     % then the temperature will decrease rapidly. Otherwise, if there has
     % penguin agent in other neighbour cell. Then the temperature will be
     % increased.
-    position = agt.position;
+    position = agt.pos;
     initial_tem = agt.temperature;
     unexposed_area = 0;
     
-    position1 = agt.position;
+    position1 = agt.pos;
     for i = 0:length(penguins)
            position2 = penguin[i].position
            distance = position1 - position2
