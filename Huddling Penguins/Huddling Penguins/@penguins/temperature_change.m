@@ -1,76 +1,34 @@
-function [agt,temperature_change] = temperature_change(agt,cn)
+function [agt] = temperature_change(agt,cn)
 
 
 global IT_STATS N_IT ENV_DATA
 
-% if [x,y-1] has no other penguin agent;
-% unexposed_area = unexposed_area+1;
-% do same thing for [x,y+1],[x-1,y],[x+1,y]
-% if [X-1,Y+1] has no other penguin agent;
-% unexposed_area = unexposed_area+0.7;
-% do same thing for [x-1,y+1],[x-1,y-1],[x+1,y+1],[x+1,y-1]
-% Then use the final exposed_area value to determine the temperature
-% decrease . So if there has no others penguin near the current penguin,
-% then the temperature will decrease rapidly. Otherwise, if there has
-% penguin agent in other neighbour cell. Then the temperature will be
-% increased.
 %pos = agt.pos;
 initial_tem = agt.temperature;
 unexposed_area = 0;
 
 pos1 = agt.pos;
 for i = 0:length(penguins)
-       pos2 = penguin[i].position
-       distance = pos1 - pos2
-       absolute_distance = sqrt(distance[1].^2 + distance[2].^2)
+       %The pos2 is the position of other penguins
+       %Distance will be calculate to detect whether there has other penguins near the current agent. 
+       pos2 = penguin(i).pos;
+       distance = pos1 - pos2;
+       absolute_distance = sqrt(distance(1)^2 + distance(2)^2);
+       %If the other agents are close, then unexposed area will be
+       %increase.
        if absolute_distance < 1
-           % try to sum up temperature here
-           
+           unexposed_area = unexposed_area+1; 
        end
 end
 
-%The code below was my past idea.
- %position[x,y] = agt.position
-%matrixN = [[x,y-1];[x,y+1];[x-1,y];[x+1,y]];
-%matrixC = [[x-1,y+1];[x-1,y-1];[x+1,y+1];[x+1,y-1]];
-%for n = 1:(matrixN
-%    if isa([x,y],'penguins')
-        
-%    end
-%end
-        
-%if isa([x,y-1],'penguins')
-%    unexposed_area = unexposed_area+1;
-%end
-%if isa([x,y+1],'penguins')
-%    unexposed_area = unexposed_area+1;
-%end
-%if isa([x-1,y],'penguins')
-%    unexposed_area = unexposed_area+1;
-%end
-%if isa([x+1,y],'penguins')
-%    unexposed_area = unexposed_area+1;
-%end
-%if isa([x-1,y+1],'penguins')
-%    unexposed_area = unexposed_area+0.7;
-%end
-%if isa([x-1,y-1],'penguins')
-%    unexposed_area = unexposed_area+0.7;    
-%end
-%if isa([x+1,y+1],'penguins')
-%    unexposed_area = unexposed_area+0.7;    
-%end
-%if isa([x+1,y-1],'penguins')
-%    unexposed_area = unexposed_area+0.7;    
-%end
-
-%if (unexposed_area >0)is not ture
-%    agt.temperature = agt.temperature - 1;
-%else 
-%    agt.temperature = agt.temperature + 0.1*unexposed_area;
-
-
-%end
-
-             
-    
+% If the unexposed area more than 1, then it mean there has other penguins
+% near the current penguin agent and it already huddled. The temperature
+% will be increase with the unexposed area.
+% If there no other penguins it mean current agent have not huddled and
+% body temperature will be decreased.
+if unexposed_area > 0
+% The paramter 0.3 and 1 might be changed with further experiment.
+    agt.temperature = initial_tem + 0.3 * unexposed_area;
+else
+    agt.temperature = initial_tem - 1;
+end
