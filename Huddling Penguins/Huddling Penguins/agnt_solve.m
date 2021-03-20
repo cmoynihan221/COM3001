@@ -16,12 +16,18 @@ prev_n=n;   %remember current agent number at the start of this iteration
 
 %execute existing agent update loop
 for cn=1:n
-	curr=agent{cn};
+    curr=agent{cn};
+    % Update the temperature changed with "temperature_change" rule for each agent
+	
+   curr=temperature_change(curr,cn);
+
    % if punguins body temputure is lower then 32 degree then start huddle
 
    % if punguins body temputure is lower then 25 then die
 
    % if punguins body temputure is higher then 38 then seprate
+   
+    agent{cn}=curr;
 
 end
 

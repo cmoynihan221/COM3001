@@ -1,4 +1,4 @@
-function ecolab(size,np,nsteps,fmode,outImages)
+function ecolab(size,np,nsteps,temperature,fmode,outImages)
 
 %ECO_LAB  agent-based predator-prey model, developed for
 %demonstration purposes only for University of Sheffield module
