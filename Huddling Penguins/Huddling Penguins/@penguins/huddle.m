@@ -20,4 +20,32 @@ function [agt]= huddle(agt,cn)
        %    ENV_DATA.shape - shape of environment - FIXED AS SQUARE
        %    ENV_DATA.units - FIXED AS KM
        %    ENV_DATA.bm_size - length of environment edge in km
+       global  IT_STATS N_IT MESSAGES
    
+       pos=agt.pos;                        %extract current position 
+       cfood=agt.food;                     %get current agent food level
+       spd=agt.speed;                      %fox migration speed in units per iteration - this is equal to the food search radius
+       hungry=1;
+       eaten=0;
+       
+       typ=MESSAGES.atype;                                         %extract types of all agents
+       pn=find(typ==1);                                            %indices of all rabbits
+       ppos=MESSAGES.pos(pn,:);                                     %extract positions of all rabbits
+       csep=sqrt((ppos(:,1)-pos(:,1)).^2+(ppos(:,2)-pos(:,2)).^2);  %calculate distance to all rabbits
+       [d,ind]=min(csep);                                            %d is distance to closest rabbit, ind is index of that rabbit
+       nrst=pn(ind);                                                %index of nearest rabbit(s)
+       
+       if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search radius        
+           if length(nrst)>1       %if more than one rabbit located at same distance then randomly pick one to head towards
+               s=round(rand*(length(nrst)-1))+1;
+               nrst=nrst(s);
+
+               nx=MESSAGES.pos(nrst,1);    %extract exact location of this rabbit
+               ny=MESSAGES.pos(nrst,2);
+               npos=[nx ny];    
+
+               agt.pos=npos;               %move agent to position of this rabbit
+              %send message to rabbit so it knows it's dead!
+           end
+       end
+       
