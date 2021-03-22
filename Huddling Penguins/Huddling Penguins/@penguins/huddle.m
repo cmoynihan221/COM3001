@@ -25,8 +25,8 @@ function [agt]= huddle(agt,cn)
        pos=agt.pos;                        %extract current position 
        cfood=agt.food;                     %get current agent food level
        spd=agt.speed;                      %fox migration speed in units per iteration - this is equal to the food search radius
-       hungry=1;
-       eaten=0;
+ 
+
        
        typ=MESSAGES.atype;                                         %extract types of all agents
        pn=find(typ==1);                                            %indices of all rabbits
@@ -48,4 +48,5 @@ function [agt]= huddle(agt,cn)
               %send message to rabbit so it knows it's dead!
            end
        end
-       
+
+

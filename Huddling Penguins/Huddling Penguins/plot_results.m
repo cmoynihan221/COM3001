@@ -21,8 +21,7 @@ function plot_results(agent,nsteps,fmode,outImages)
     %broadcast to each other
 
     %write results to the screen
-    nr=IT_STATS.tot_r;
-    nf=IT_STATS.tot_f;
+
     np=IT_STATS.tot_p;
     disp(strcat('Iteration = ',num2str(N_IT)))
     disp(strcat('No. penguins = ',num2str(IT_STATS.div_p(N_IT+1))))
@@ -105,7 +104,7 @@ function plot_results(agent,nsteps,fmode,outImages)
         while CONTROL_DATA.pause==true    % pause/resume functionality - allows pan and zoom during pause...
             pan on
             axis off
-            title(['Iteration no.= ' num2str(N_IT) '.  No. agents = ' num2str(n)]);
+            title(['Iteration no.= ' num2str(N_IT) '.  No. agents = ' num2str(np(1))]);
             text(-2.6, 7.7, 'PAUSED', 'Color', 'r');
             drawnow
             uicontrol('Style','pushbutton',...
@@ -122,7 +121,7 @@ function plot_results(agent,nsteps,fmode,outImages)
                       'Position',[20 20 60 20], ...
                       'Callback', 'global ENV_DATA; ENV_DATA.pause=false; clear ENV_DATA;'); 
         end
-        title(['Iteration no.= ' num2str(N_IT) '.  No. agents = ' num2str(n)]);
+        title(['Iteration no.= ' num2str(N_IT) '.  No. agents = ' num2str(np(1))]);
         axis off
         drawnow 
         if outImages==true  %this outputs images if outImage parameter set to true!!
