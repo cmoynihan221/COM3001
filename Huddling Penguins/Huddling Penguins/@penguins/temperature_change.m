@@ -10,8 +10,8 @@ typ = MESSAGES.atype;
 penguin_only = find(typ==1); 
 pos1 = agt.pos;
 penguin_positions = MESSAGES.pos(penguin_only, : );
-for i = 0:length(penguin_positions)
-        pos2 = penguin_positions;
+for i = 1:length(penguin_positions)
+        pos2 = penguin_positions(i, :) 
         distance = pos1 - pos2;
         absolute_distance = sqrt(distance(1)^2 + distance(2)^2);
 %       %If the other agents are close, then unexposed area will be
@@ -20,7 +20,6 @@ for i = 0:length(penguin_positions)
            unexposed_area = unexposed_area+1; 
        end
 end
-
 % If the unexposed area more than 1, then it means there has other penguins
 % near the current penguin agent and it already huddled. The temperature
 % will be increase with the unexposed area.
