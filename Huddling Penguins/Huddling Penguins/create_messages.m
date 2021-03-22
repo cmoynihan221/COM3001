@@ -17,10 +17,10 @@ function create_messages(np,agent)
      if isa(agent{an},'penguins')
         MESSAGES.atype(an)=1;
         MESSAGES.pos(an,:)=get(agent{an},'pos');
+        MESSAGES.body_temperature(an,:)=get(agent{an},'body_temperature');
      else
         MESSAGES.atype(an)=0; 
         MESSAGES.pos(an,:)=[-1 -1];
      end
      MESSAGES.dead(an)=0;
  end
-     
