@@ -30,7 +30,6 @@ if unexposed_area > 0
 % The paramter 0.3 and 1 might be changed with further experiment.
 % Also consider the ENV_DATA.bm_temperature
     agt.body_temperature = initial_tem + 0.3 * unexposed_area * ENV_DATA.bm_temperature;
-    disp(agt.temperature);
 else
     agt.body_temperature = initial_tem - 1* ENV_DATA.bm_temperature^(-1);
 end
