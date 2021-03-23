@@ -19,15 +19,17 @@ body_tem = MESSAGES.body_temperature(typ, : );
 for cn=1:n
     curr=agent{cn};
     % Update the temperature changed with "temperature_change" rule for each agent	
-   curr=temperature_change(curr,cn);
+    curr=temperature_change(curr,cn);
    % if punguins body temputure is lower then 32 degree then start huddle
     if body_tem <32
-        curr=huddle(curr,cn);   
+        % curr=huddle(curr,cn);   
+        disp("hello");
     % if punguins body temputure is higher then 38 then seprate
     else 
-        curr=migrate(curr,cn);
+%         curr=seprate(curr,cn);
+        disp("world");
     end
-    agent{cn}=curr;
+%     agent{cn}=curr;
 
 end
 
