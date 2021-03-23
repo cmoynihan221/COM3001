@@ -19,13 +19,13 @@ for i = 1:length(penguin_positions)
        if absolute_distance < 1
            unexposed_area = unexposed_area+1; 
        end
-            if unexposed_area > 0
-    % The paramter 0.3 and 1 might be changed with further experiment.
-    % Also consider the ENV_DATA.bm_temperature
-        agt.body_temperature = initial_tem + 0.3 * unexposed_area * ENV_DATA.bm_temperature;
-            else
-        agt.body_temperature = initial_tem - 1* ENV_DATA.bm_temperature^(-1);
-            end
+       if unexposed_area > 0
+% The paramter 0.3 and 1 might be changed with further experiment.
+% Also consider the ENV_DATA.bm_temperature
+    agt.body_temperature = initial_tem + 0.3 * unexposed_area * ENV_DATA.bm_temperature;
+else
+    agt.body_temperature = initial_tem - 1* ENV_DATA.bm_temperature^(-1);
+end
 
 end
 % If the unexposed area more than 1, then it means there has other penguins
