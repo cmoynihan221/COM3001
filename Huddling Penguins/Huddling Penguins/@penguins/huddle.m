@@ -23,7 +23,7 @@ function [agt]= huddle(agt,cn)
        global  IT_STATS N_IT MESSAGES
    
        pos=agt.pos;                        %extract current position 
-       cfood=agt.food;                     %get current agent food level
+      
        spd=agt.speed;                      %fox migration speed in units per iteration - this is equal to the food search radius
  
 

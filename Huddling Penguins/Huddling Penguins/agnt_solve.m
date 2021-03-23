@@ -11,7 +11,7 @@ global MESSAGES
 %Created by Dawn Walker 3/4/08 
 
 n=length(agent);    %current no. of agents
-n_new=0;    %no. new agents
+
 prev_n=n;   %remember current agent number at the start of this iteration
 typ = MESSAGES.atype; 
 body_tem = MESSAGES.body_temperature(typ, : );
@@ -26,12 +26,13 @@ for cn=1:n
         disp("hello");
     % if punguins body temputure is higher then 38 then seprate
     else 
-%         curr=seprate(curr,cn);
+%         curr=migrate(curr,cn);
+        curr=huddle(curr,cn); 
         disp("world");
     end
-%     agent{cn}=curr;
+     agent{cn}=curr;
 
 end
 
-temp_n=n+n_new; %new agent number (before accounting for agent deaths)
+temp_n=n; %new agent number (before accounting for agent deaths)
 [nagent,nn]=update_messages(agent,prev_n,temp_n);   %function which update message list and 'kills off' dead agents.
