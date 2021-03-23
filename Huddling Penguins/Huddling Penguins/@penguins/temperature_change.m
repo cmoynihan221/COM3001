@@ -16,9 +16,10 @@ for i = 1:length(penguin_positions)
         absolute_distance = sqrt(distance(1)^2 + distance(2)^2);
 %       %If the other agents are close, then unexposed area will be
        %increase.
-       if absolute_distance < 1
+       if (absolute_distance < 1) && (absolute_distance~=0)
            unexposed_area = unexposed_area+1; 
        end
+       disp(unexposed_area);
 end
 % If the unexposed area more than 1, then it means there has other penguins
 % near the current penguin agent and it already huddled. The temperature
@@ -28,11 +29,10 @@ end
 if unexposed_area > 0
 % The paramter 0.3 and 1 might be changed with further experiment.
 % Also consider the ENV_DATA.bm_temperature
-    agt.body_temperature = initial_tem + 0.3 * unexposed_area * ENV_DATA.bm_temperature;
+    agt.body_temperature = initial_tem + 0.3;
 else
-    agt.body_temperature = initial_tem - 1* ENV_DATA.bm_temperature^(-1);
+    agt.body_temperature = initial_tem - 1;
 end
-
 
              
     
