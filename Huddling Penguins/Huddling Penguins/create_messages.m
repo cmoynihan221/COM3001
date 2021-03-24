@@ -24,5 +24,6 @@ function create_messages(np,agent)
      end
      MESSAGES.dead(an)=0;
      MESSAGES.Huddle = 0;
+     MESSAGES.HuddleNum= 0;
      MESSAGES.HLoc = [];
  end

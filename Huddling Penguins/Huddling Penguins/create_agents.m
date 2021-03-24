@@ -24,5 +24,5 @@ MESSAGES.pos=(ploc);
 for p=np:-1:1
     position=ploc(p,:);
     body_temperature = PARAM.P_TEM;
-    agent{p}=penguins(body_temperature,position,PARAM.P_SPD);
+    agent{p}=penguins(body_temperature,position,PARAM.P_SPD, 0);
 end

@@ -21,6 +21,7 @@ body_tem = MESSAGES.body_temperature(penguins, :)
 %execute existing agent update loop
 
 for cn=1:n
+    
     tem = body_tem(cn, :) 
     curr=agent{cn};
     
@@ -28,17 +29,26 @@ for cn=1:n
     % Update the temperature changed with "temperature_change" rule for each agent	
     curr=temperature_change(curr,cn, na(1));
    % if punguins body temputure is lower then 32 degree then start huddle
-    bool = MESSAGES.Huddle == 0
-    if tem < 32
-        if(na(1) < 1)
+    
+    
+    if tem < 32 & curr.huddle == 0
+        if(na(1) < 1 & MESSAGES.Huddle == 0 )
             curr=huddle(curr,cn);
         elseif(MESSAGES.Huddle == 0)
                 MESSAGES.Huddle = 1;
-                MESSAGES.HLoc = curr.pos;
-        else
-            disp("test")
+                MESSAGES.HLoc =curr.pos;
+                curr.huddle = 1;    
+        elseif(MESSAGES.Huddle == 1 )
+            distance = curr.pos - MESSAGES.HLoc;
+            absolute_distance = sqrt(distance(1)^2 + distance(2)^2);
+            if(absolute_distance>5)
+                curr=huddle(curr,cn);
+            else
+                curr.huddle = 1;
+            end
         end
-    else
+    elseif tem >
+        
       curr=migrate(curr,cn);
     end
     

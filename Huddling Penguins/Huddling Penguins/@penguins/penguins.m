@@ -6,6 +6,7 @@ classdef penguins % declares pemguins object
         body_temperature;
         pos;
         speed;
+        huddle;
     end
     
     methods
@@ -33,6 +34,11 @@ classdef penguins % declares pemguins object
                   	p.body_temperature =varargin{1};
                     p.pos=varargin{2};
                     p.speed=varargin{3};       %number of iterations since penguin last reproduced.
+                case 4                       %create a new penguin (currently the only constructor method used)
+                  	p.body_temperature =varargin{1};
+                    p.pos=varargin{2};
+                    p.speed=varargin{3};  
+                    p.huddle=varargin{4}; 
                 otherwise
                     error('Invalid no. of input arguments for penguin')
             end

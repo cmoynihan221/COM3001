@@ -22,9 +22,11 @@ function plot_results(agent,nsteps,fmode,outImages)
 
     %write results to the screen
 
-    np=IT_STATS.tot_p;
-    disp(strcat('Iteration = ',num2str(N_IT)))
-    disp(strcat('No. penguins = ',num2str(IT_STATS.div_p(N_IT+1))))
+    np=IT_STATS.huddleNum;
+    huddle = IT_STATS.hud;
+    avg = IT_STATS.avg_temp;
+    %disp(strcat('Iteration = ',num2str(N_IT)))
+    %disp(strcat('No. penguins = ',num2str(IT_STATS.div_p(N_IT+1))))
 
     %plot line graphs of agent numbers and remaining food
     if (fmode==false) || (N_IT==nsteps) || ((fmode==true) && (rem(N_IT , CONTROL_DATA.fmode_display_every)==0))
@@ -40,19 +42,19 @@ function plot_results(agent,nsteps,fmode,outImages)
         f2=figure(2);
         set(f2,'Units','Normalized');
         set(f2,'Position',[0.5 0.5 0.45 0.4]);
-
+        
         subplot(3,1,1),cla
         subplot(3,1,1),plot((1:N_IT+1),np(1:N_IT+1),col{1});
-        subplot(3,1,1),axis([0 nsteps 0 1.1*max(np)]);
-        %subplot(3,1,2),cla
-        %subplot(3,1,2),plot((1:N_IT+1),nf(1:N_IT+1),col{2});
-        %subplot(3,1,2),axis([0 nsteps 0 1.1*max(nf)]);
-        %subplot(3,1,3),cla
-        %subplot(3,1,3),plot((1:N_IT+1),tot_food(1:N_IT+1),'m-');
-        %subplot(3,1,3),axis([0 nsteps 0 tot_food(1)]);
+        subplot(3,1,1),axis([0 nsteps 0 25]);
+        subplot(3,1,2),cla
+        subplot(3,1,2),plot((1:N_IT+1),huddle(1:N_IT+1),col{2});
+        subplot(3,1,2),axis([0 nsteps 0 1]);
+        subplot(3,1,3),cla
+        subplot(3,1,3),plot((1:N_IT+1),avg(1:N_IT+1),'m-');
+        subplot(3,1,3),axis([0 nsteps -50 50]);
         subplot(3,1,1),title('No. penguins');
-        %subplot(3,1,2),title('No. live foxes');
-        %subplot(3,1,3),title('Total food');
+        subplot(3,1,2),title('Huddle');
+        subplot(3,1,3),title('Avg Temp');
         drawnow
 
         %create plot of agent locations. 

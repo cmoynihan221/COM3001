@@ -24,7 +24,7 @@ function ecolab(size,np,nsteps,temperature,fmode,outImages)
     clear global
     close all
 
-    global N_IT IT_STATS ENV_DATA CONTROL_DATA
+    global N_IT IT_STATS ENV_DATA CONTROL_DATA MESSAGES
 
     if nargin == 4
         fmode=true;
@@ -46,6 +46,7 @@ function ecolab(size,np,nsteps,temperature,fmode,outImages)
     for n_it=1:nsteps                   %the main execution loop
         N_IT=n_it;
         [agent,n]=agnt_solve(agent);     %the function which calls the rules
+        
         plot_results(agent,nsteps,fmode,outImages); %updates results figures and structures
         %mov(n_it)=getframe(fig3);
         if n<=0                          %if no more agents, then stop simulation

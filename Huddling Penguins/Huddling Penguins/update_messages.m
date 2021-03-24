@@ -43,7 +43,10 @@ for cn=1:temp_n
         MESSAGES.atype(cn)=1;
         MESSAGES.body_temperature(cn)= agent{cn}.body_temperature;
         IT_STATS.tot_p(N_IT+1)=IT_STATS.tot_p(N_IT+1)+1;
-         MESSAGES.dead(cn)=0;           %clear death message
+        IT_STATS.hud(N_IT+1)= MESSAGES.Huddle;
+        IT_STATS.avg_temp(N_IT+1)= mean(MESSAGES.body_temperature);
+        IT_STATS.huddleNum(N_IT+1)= MESSAGES.HuddleNum;
+        MESSAGES.dead(cn)=0;           %clear death message
          nn=nn+1;
     else                                %agent has died
         MESSAGES.pos(cn,:)=[-1 -1];     %enter dummy position in list
