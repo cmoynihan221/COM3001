@@ -8,6 +8,7 @@ function initialise_results(np,nsteps)
 %ENV_DATA - data structure representing the environment 
  
  IT_STATS=struct('div_p',[zeros(1,nsteps+1)],... 
+                'hud',[zeros(1,nsteps+1)],... 
                 'mig',[zeros(1,nsteps+1)],...                %no. agents migrating per iteration
                 'tot',[zeros(1,nsteps+1)],...				%total no. agents in model per iteration
                 'tot_p',[zeros(1,nsteps+1)]); 

@@ -10,25 +10,29 @@ function [nagent,nn]=agnt_solve(agent)
 global MESSAGES
 %Created by Dawn Walker 3/4/08 
 
-n=length(agent);    %current no. of agents
+    %current no. of agents
 
-prev_n=n;   %remember current agent number at the start of this iteration
-typ = MESSAGES.atype; 
-body_tem = MESSAGES.body_temperature(typ, : );
+   %remember current agent number at the start of this iteration
+typ = MESSAGES.atype
+penguins = find(typ==1)
+n = length(penguins) 
+prev_n=n
+body_tem = MESSAGES.body_temperature(penguins, :)
 %execute existing agent update loop
 for cn=1:n
+    tem = body_tem(cn, :) 
     curr=agent{cn};
     % Update the temperature changed with "temperature_change" rule for each agent	
     curr=temperature_change(curr,cn);
    % if punguins body temputure is lower then 32 degree then start huddle
-    if body_tem <32
-        % curr=huddle(curr,cn);   
+    if tem < 38
+        curr=huddle(curr,cn);   
         disp("hello");
     % if punguins body temputure is higher then 38 then seprate
     else 
 %         curr=migrate(curr,cn);
         curr=huddle(curr,cn); 
-        disp("world");
+        disp("temputure did not change");
     end
      agent{cn}=curr;
 
