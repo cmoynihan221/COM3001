@@ -32,8 +32,13 @@ function [agt, closest]= huddle(agt,cn)
        csep=sqrt((ppos(:,1)-pos(:,1)).^2+(ppos(:,2)-pos(:,2)).^2); 
        csep(cn)= []  %calculate distance to all penguins
        [d,ind]=min(csep);                                            %d is distance to closest rabbit, ind is index of that rabbit
-       nrst=penguins(ind);                                                %index of nearest rabbit(s)
-       posNrst = MESSAGES.pos(nrst,:);  
+        nrst=penguins(ind);                                            %index of nearest rabbit(s)
+       if(MESSAGES.Huddle == true)
+           posNrst = MESSAGES.HLoc;
+       else
+           posNrst = MESSAGES.pos(nrst,:);  
+       end
+       
        posX = agt.pos(1);
        posY = agt.pos(2);
        

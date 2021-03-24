@@ -21,7 +21,6 @@ body_tem = MESSAGES.body_temperature(penguins, :)
 %execute existing agent update loop
 
 for cn=1:n
-    
     tem = body_tem(cn, :) 
     curr=agent{cn};
     
@@ -30,20 +29,16 @@ for cn=1:n
     curr=temperature_change(curr,cn, na(1));
    % if punguins body temputure is lower then 32 degree then start huddle
     bool = MESSAGES.Huddle == 0
-    
     if tem < 32
-        if(na(1) < 1 & MESSAGES.Huddle == 0 )
-            curr=huddle(curr,cn);
-        elseif(MESSAGES.Huddle == 1 )
+        if(na(1) < 1)
             curr=huddle(curr,cn);
         elseif(MESSAGES.Huddle == 0)
                 MESSAGES.Huddle = 1;
-                MESSAGES.HLoc(end+1) =curr.pos;
+                MESSAGES.HLoc = curr.pos;
         else
             disp("test")
         end
     else
-        
       curr=migrate(curr,cn);
     end
     
