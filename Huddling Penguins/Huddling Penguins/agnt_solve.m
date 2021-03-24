@@ -22,19 +22,22 @@ body_tem = MESSAGES.body_temperature(penguins, :)
 for cn=1:n
     tem = body_tem(cn, :) 
     curr=agent{cn};
+    na =0;
+    na, neighbours = getNeighbours(curr);
     % Update the temperature changed with "temperature_change" rule for each agent	
-    curr=temperature_change(curr,cn);
+    curr=temperature_change(curr,cn, n);
    % if punguins body temputure is lower then 32 degree then start huddle
-    if tem < 32
-        curr=huddle(curr,cn);   
-        disp("hello");
-    % if punguins body temputure is higher then 38 then seprate
-    else 
-        curr=migrate(curr,cn);
-        disp("temputure did not change");
+   
+    
+    if(na < 1)
+      curr=huddle(curr,cn);
+    else
+      disp("have ")
     end
+    
+    
      agent{cn}=curr;
-
+    
 end
 
 temp_n=n; %new agent number (before accounting for agent deaths)

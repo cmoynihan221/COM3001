@@ -1,4 +1,4 @@
-function [agt]= huddle(agt,cn)
+function [agt, closest]= huddle(agt,cn)
 
     %migration functions for class FOX
     %agt=fox object
@@ -10,7 +10,7 @@ function [agt]= huddle(agt,cn)
     %degrees at it will try again (up to 8 times)
     %modified by D Walker 11/4/08
     
-    global IT_STATS N_IT ENV_DATA
+    global IT_STATS N_IT ENV_DATA PARAM
     
     %N_IT is current iteration number
     %IT_STATS is data structure containing statistics on model at each
@@ -29,10 +29,31 @@ function [agt]= huddle(agt,cn)
        typ = MESSAGES.atype
        penguins = find(typ==1)                                      %indices of all rabbits
        ppos=MESSAGES.pos(penguins,:);                                     %extract positions of all rabbits
-       csep=sqrt((ppos(:,1)-pos(:,1)).^2+(ppos(:,2)-pos(:,2)).^2);  %calculate distance to all rabbits
+       csep=sqrt((ppos(:,1)-pos(:,1)).^2+(ppos(:,2)-pos(:,2)).^2); 
+       csep(cn)= []  %calculate distance to all penguins
        [d,ind]=min(csep);                                            %d is distance to closest rabbit, ind is index of that rabbit
        nrst=penguins(ind);                                                %index of nearest rabbit(s)
+       posNrst = MESSAGES.pos(nrst,:);  
+       posX = agt.pos(1);
+       posY = agt.pos(2);
        
+       posNrstX = posNrst(1);
+       posNrstY = posNrst(2);
+       
+       if(posX < posNrstX)
+           posX = posX +  PARAM.P_SPD;
+       elseif(posX > posNrstX)
+           posX = posX -  PARAM.P_SPD;
+       end
+       if(posY < posNrstY)
+           posY = posY +  PARAM.P_SPD;
+       elseif(posY > posNrstY)
+           posY = posY -  PARAM.P_SPD;
+       end
+       newPos = [posX,posY];
+       agt.pos = newPos
+       closest = nrst;
+       %{
        if d<=spd&length(nrst)>0    %if there is at least one  rabbit within the search radius        
            if length(nrst)>1       %if more than one rabbit located at same distance then randomly pick one to head towards
                s=round(rand*(length(nrst)-1))+1;
@@ -55,5 +76,9 @@ function [agt]= huddle(agt,cn)
                %move agent to position of this rabbit
         
        end
-
+        %}
+      
+           
+       
+       
 

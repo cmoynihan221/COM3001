@@ -1,27 +1,13 @@
-function [agt] = temperature_change(agt,cn)
+function [agt] = temperature_change(agt,cn, unexposed_area)
 
 
 global ENV_DATA MESSAGES
 
 %pos = agt.pos;
 initial_tem = agt.body_temperature;
-unexposed_area = 0;
-typ = MESSAGES.atype; 
-penguin_only = find(typ==1); 
-pos1 = agt.pos;
-penguin_positions = MESSAGES.pos(penguin_only, : );
-for i = 1:length(penguin_positions)
-        disp(pos1);
-        pos2 = penguin_positions(i, :) 
-        distance = pos1 - pos2;
-        absolute_distance = sqrt(distance(1)^2 + distance(2)^2);
-%       %If the other agents are close, then unexposed area will be
-       %increase.
-       if (absolute_distance < 1) && (absolute_distance~=0)
-           unexposed_area = unexposed_area+1; 
-       end
-       disp(unexposed_area);
-end
+
+
+
 % If the unexposed area more than 1, then it means there has other penguins
 % near the current penguin agent and it already huddled. The temperature
 % will be increase with the unexposed area.
