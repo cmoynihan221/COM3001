@@ -40,13 +40,9 @@ for cn=1:temp_n
         nagent{cn}=agent{cn};           %copy object into the new list
         pos=get(agent{cn},'pos');
         MESSAGES.pos(cn,:)=pos;                    
-         if isa(agent{cn},'rabbit')
-             MESSAGES.atype(cn)=1;
-             IT_STATS.tot_r(N_IT+1)=IT_STATS.tot_r(N_IT+1)+1;
-         elseif isa(agent{cn},'fox')
-             MESSAGES.atype(cn)=2;
-             IT_STATS.tot_f(N_IT+1)=IT_STATS.tot_f(N_IT+1)+1;
-         end
+        MESSAGES.atype(cn)=1;
+        MESSAGES.body_temperature(cn)= agent{cn}.body_temperature;
+        IT_STATS.tot_p(N_IT+1)=IT_STATS.tot_p(N_IT+1)+1;
          MESSAGES.dead(cn)=0;           %clear death message
          nn=nn+1;
     else                                %agent has died
