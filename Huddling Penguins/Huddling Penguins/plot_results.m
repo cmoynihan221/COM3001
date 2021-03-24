@@ -45,14 +45,14 @@ function plot_results(agent,nsteps,fmode,outImages)
         
         subplot(3,1,1),cla
         subplot(3,1,1),plot((1:N_IT+1),np(1:N_IT+1),col{1});
-        subplot(3,1,1),axis([0 nsteps 0 25]);
+        subplot(3,1,1),axis([0 nsteps 0 70]);
         subplot(3,1,2),cla
         subplot(3,1,2),plot((1:N_IT+1),huddle(1:N_IT+1),col{2});
         subplot(3,1,2),axis([0 nsteps 0 1]);
         subplot(3,1,3),cla
         subplot(3,1,3),plot((1:N_IT+1),avg(1:N_IT+1),'m-');
         subplot(3,1,3),axis([0 nsteps -50 50]);
-        subplot(3,1,1),title('No. penguins');
+        subplot(3,1,1),title('No.Huddle penguins');
         subplot(3,1,2),title('Huddle');
         subplot(3,1,3),title('Avg Temp');
         drawnow
