@@ -25,13 +25,12 @@ for cn=1:n
     % Update the temperature changed with "temperature_change" rule for each agent	
     curr=temperature_change(curr,cn);
    % if punguins body temputure is lower then 32 degree then start huddle
-    if tem < 38
+    if tem < 32
         curr=huddle(curr,cn);   
         disp("hello");
     % if punguins body temputure is higher then 38 then seprate
     else 
-%         curr=migrate(curr,cn);
-        curr=huddle(curr,cn); 
+        curr=migrate(curr,cn);
         disp("temputure did not change");
     end
      agent{cn}=curr;

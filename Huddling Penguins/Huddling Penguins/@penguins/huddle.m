@@ -38,14 +38,17 @@ function [agt]= huddle(agt,cn)
                s=round(rand*(length(nrst)-1))+1;
                nrst=nrst(s);
            end
-           
+         
                nx=MESSAGES.pos(nrst,1);    %extract exact location of this rabbit
                ny=MESSAGES.pos(nrst,2);
-               npos=[nx+10 ny+10];
+   
+               npos=[nx ny];
+               
            if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that fox has not left edge of model - correct if so.
               agt.pos=npos; 
               IT_STATS.hud(N_IT+1)=IT_STATS.hud(N_IT+1)+1; 
            end
+         
               agt.pos=npos; 
               IT_STATS.hud(N_IT+1)=IT_STATS.hud(N_IT+1)+1; 
                
