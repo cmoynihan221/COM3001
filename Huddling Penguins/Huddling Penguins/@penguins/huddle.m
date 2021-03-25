@@ -58,30 +58,7 @@ function [agt, closest]= huddle(agt,cn)
        newPos = [posX,posY];
        agt.pos = newPos
        closest = nrst;
-       %{
-       if d<=spd&length(nrst)>0    %if there is at least one penguin within the search radius        
-           if length(nrst)>1       %if more than one penguin located at same distance then randomly pick one to head towards
-               s=round(rand*(length(nrst)-1))+1;
-               nrst=nrst(s);
-           end
-         
-               nx=MESSAGES.pos(nrst,1);    %extract exact location of this penguin
-               ny=MESSAGES.pos(nrst,2);
-   
-               npos=[nx ny];
-               
-           if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that penguin has not left edge of model - correct if so.
-              agt.pos=npos; 
-              IT_STATS.hud(N_IT+1)=IT_STATS.hud(N_IT+1)+1; 
-           end
-         
-              agt.pos=npos; 
-              IT_STATS.hud(N_IT+1)=IT_STATS.hud(N_IT+1)+1; 
-               
-               %move agent to position of thispenguin
-        
-       end
-        %}
+
       
            
        
