@@ -1,8 +1,8 @@
-classdef penguins % declares pemguins object
+classdef penguins % declares penguins object
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
     
-    properties
+    properties          %define penguins properties (parameters) 
         body_temperature;
         pos;
         speed;
@@ -11,12 +11,12 @@ classdef penguins % declares pemguins object
     
     methods
         function p = penguins(varargin)
-           %f=fox(age,food,pos....)
+           %p=penguins(body_temperature,pos,speed....)
                 %
-                %age of agent (usually 0)
-                %food - amount of food that rabbit has eaten
-                %pos - vector containg x,y, co-ords 
-
+                % The body temperature of each agent. (Usually it will set
+                % as 38 at the beginning)
+                % pos - vector containg x,y, co-ords 
+                % speed - the speed parameter (Usually it set as 2)
                 %Modified by Martin Bayley on 29/01/13
 
             switch nargin                     %Use switch statement with nargin,varargin contructs to overload constructor methods
