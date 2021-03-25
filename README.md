@@ -15,6 +15,7 @@ For instance,
 ecolab(100,10,200,-20,true,true)
 ```
 It will generate the 100 square kilometer environment with 10 penguins. The iteration will process 200 times and environment is -20 degree. It will output image automaticlly and Fast mode is used.
+![image1](https://user-images.githubusercontent.com/57352059/112484114-9f3ae980-8db4-11eb-8569-74a7e36ea0ad.png)
 
 ## Acknowledgements
 Thanks for Dawn C Walker provided the ecolab code to support us investigate agent-based model.
