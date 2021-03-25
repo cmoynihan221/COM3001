@@ -14,8 +14,11 @@ For instance,
 ```
 ecolab(100,10,200,-20,true,true)
 ```
-It will generate the 100 square kilometer environment with 10 penguins. The iteration will process 200 times and environment is -20 degree. It will output image automaticlly and Fast mode is used.
-It will generate three line charts as this image shown below.<br/>
+It will generate the 100 square kilometer environment with 10 penguins. The iteration will process 200 times and environment is -20 degree. It will output image automaticlly and Fast mode is used.<br/>
+It will generate three line charts as this image shown below.<br/> 
+The first line chart show the numbers of penguins huddle with iteration.<br/> 
+The second line chart show whether penguin huddle or not with iteration.<br/> 
+The third line chart show the average temperature of penguins with iteration.<br/> 
 ![image1](https://user-images.githubusercontent.com/57352059/112484114-9f3ae980-8db4-11eb-8569-74a7e36ea0ad.png)
 
 Here is the result at the start and end stage.<br/>
