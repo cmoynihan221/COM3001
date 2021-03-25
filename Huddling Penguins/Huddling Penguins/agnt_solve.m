@@ -30,7 +30,9 @@ for cn=1:n
     curr=temperature_change(curr,cn, na(1));
    % if punguins body temputure is lower then 32 degree then start huddle
     
-    
+    % If the body temperature lower than threshold value and current agent
+    % have not huddle yet. Then it will try to found other penguins agent
+    % to huddle.    
     if tem < -7 & curr.huddle == 0
         if(na(1) < 1 & MESSAGES.Huddle == 0 )
             curr=huddle(curr,cn);

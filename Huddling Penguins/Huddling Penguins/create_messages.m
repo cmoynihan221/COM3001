@@ -10,6 +10,7 @@ function create_messages(np,agent)
    %    MESSAGES.pos - list of every agent position in [x y]
    %    MESSAGE.dead - n x1 array containing ones for agents that have died
    %    in the current iteration
+   %    MESSAGE.body_temperature - list of every agent body temperature.
    
  global MESSAGES
  
