@@ -11,7 +11,7 @@ global ENV_DATA MESSAGES
             pos2 = penguin_positions(i, :) 
             distance = pos1 - pos2;
             absolute_distance = sqrt(distance(1)^2 + distance(2)^2);
-    %       %If the other agents are close, then unexposed area will be
+           %If the other agents are close, then unexposed area will be
            %increase.
            if (absolute_distance < 1.5) && (absolute_distance~=0)
                unexposed_area = unexposed_area+1; 
