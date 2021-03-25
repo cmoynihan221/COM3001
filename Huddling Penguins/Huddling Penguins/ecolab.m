@@ -5,7 +5,10 @@ function ecolab(size,np,nsteps,temperature,fmode,outImages)
 %COM3001/6006/6009
 
 %AUTHOR Dawn Walker d.c.walker@sheffield.ac.uk
-%Created April 2008
+%AUTHOR Ziting Zhao zzhao30@sheffield.ac.uk
+%AUTHOR Hao Li        hli75@sheffield.ac.uk
+%AUTHOR Charlie Moynihan cmoynihan1@sheffield.ac.uk
+
 
 %ecolab(size,nr,nf,nsteps)
 %size = size of model environmnet in km (sugested value for plotting
@@ -48,7 +51,7 @@ function ecolab(size,np,nsteps,temperature,fmode,outImages)
         [agent,n]=agnt_solve(agent);     %the function which calls the rules
         
         plot_results(agent,nsteps,fmode,outImages); %updates results figures and structures
-        %mov(n_it)=getframe(fig3);
+
         if n<=0                          %if no more agents, then stop simulation
             break
             disp('General convergence criteria satisfied - no agents left alive! > ')

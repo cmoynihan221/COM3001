@@ -11,21 +11,20 @@ global IT_STATS N_IT ENV_DATA
    %    ENV_DATA.shape - shape of environment - FIXED AS SQUARE
    %    ENV_DATA.units - FIXED AS KM
    %    ENV_DATA.bm_size - length of environment edge in km
-   %    ENV_DATA.food is  a bm_size x bm_size array containing distribution
-   %    of food
+ 
      
   
 bm=ENV_DATA.bm_size;   
-spd=agt.speed;   %fos migration speed in units per iteration - this is equal to the food search radius
+spd=agt.speed;   %penguin migration speed in units per iteration
 pos=agt.pos;     %extract current position 
 
 mig=0;
 cnt=1;
-dir=rand*2*pi;              %fox has been unable to find food, so chooses a random direction to move in
-while mig==0&cnt<=8        %fox has up to 8 attempts to migrate (without leaving the edge of the model)
+dir=rand*2*pi;              % chooses a random direction to move in
+while mig==0&cnt<=8        %penguin has up to 8 attempts to migrate (without leaving the edge of the model)
     npos(1)=pos(1)+spd*cos(dir);        %new x co-ordinate
     npos(2)=pos(2)+spd*sin(dir);        %new y co-ordinate
-    if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that fox has not left edge of model - correct if so.
+    if npos(1)<ENV_DATA.bm_size&npos(2)<ENV_DATA.bm_size&npos(1)>=1&npos(2)>=1   %check that penguin has not left edge of model - correct if so.
        mig=1;
     end
     cnt=cnt+1;

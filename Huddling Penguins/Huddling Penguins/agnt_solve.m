@@ -64,9 +64,6 @@ for cn=1:n
         
     end
     
-    
-    
-    
      agent{cn}=curr;
     
 end

@@ -1,15 +1,9 @@
 function plot_results(agent,nsteps,fmode,outImages)
 
     %Plots 2d patch images of agents onto background 
-    %%%%%%%%%%%
-    %plot_results(agent,nr,nf)
-    %%%%%%%%%%%
+
     %agent - current list of agent structures
-    %nr -  no. rabbits
-    %nf -  no. rabbits
-
-    % Modified by D Walker 3/4/08
-
+ 
     global N_IT IT_STATS ENV_DATA MESSAGES CONTROL_DATA
     %declare variables that can be seen by all functions
     %N_IT is current iteration number
@@ -25,8 +19,7 @@ function plot_results(agent,nsteps,fmode,outImages)
     np=IT_STATS.huddleNum;
     huddle = IT_STATS.hud;
     avg = IT_STATS.avg_temp;
-    %disp(strcat('Iteration = ',num2str(N_IT)))
-    %disp(strcat('No. penguins = ',num2str(IT_STATS.div_p(N_IT+1))))
+
 
     %plot line graphs of agent numbers and remaining food
     if (fmode==false) || (N_IT==nsteps) || ((fmode==true) && (rem(N_IT , CONTROL_DATA.fmode_display_every)==0))

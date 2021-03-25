@@ -2,14 +2,7 @@ function [agt, closest]= huddle(agt,cn)
 
     %huddle functions for class Penguin
     %agt= Penguin
-    %cn - current agent number
-    
-    %SUMMARY OF penguin MIGRATE RULE
-    %If a penguin has not eaten, it will pick a random migration direction
-    %If it will leave the edge of the model, the direction is incremented by 45
-    %degrees at it will try again (up to 8 times)
-    %modified by D Walker 11/4/08
-    
+    %cn - current agent number    
     global IT_STATS N_IT ENV_DATA PARAM
     
     %N_IT is current iteration number
@@ -39,13 +32,13 @@ function [agt, closest]= huddle(agt,cn)
            posNrst = MESSAGES.pos(nrst,:);  
        end
        
-       posX = agt.pos(1);
+       posX = agt.pos(1); 
        posY = agt.pos(2);
        
        posNrstX = posNrst(1);
        posNrstY = posNrst(2);
-       
-       if(posX < posNrstX)
+       %move to the tagert point
+       if(posX < posNrstX) 
            posX = posX +  PARAM.P_SPD;
        elseif(posX > posNrstX)
            posX = posX -  PARAM.P_SPD;

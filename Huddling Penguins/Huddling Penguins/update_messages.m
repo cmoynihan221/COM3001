@@ -8,8 +8,7 @@ function [nagent,nn]=update_messages(agent,prev_n,temp_n)
 %prev_n - previous number of agents at the start of this iteration
 %temp_n - number of existing agents, including those that have died in the
 %current iteration
-%nagent - list of surviving agents and empty structures
-%nn - number of surviving agents
+
 
 %global variables
 %N_IT current iteration no
@@ -29,14 +28,8 @@ global MESSAGES IT_STATS N_IT ENV_DATA
 nagent=cell(1,temp_n);                  %initialise list for surviving agents
 nn=0;                                   %tracks number of surviving agents
 for cn=1:temp_n
-    if isempty(agent{cn})               %agent died in a previous iteration (not the current one)
-        dead=1;
-    elseif cn<=prev_n                   %agent is not new, therefore it might have died
-        dead=MESSAGES.dead(cn);         %will be one for agents that have died, zero otherwise
-    else 
-        dead=0;
-    end
-    if dead==0                          %if agent is not dead
+  
+                        %if agent is not dead
         nagent{cn}=agent{cn};           %copy object into the new list
         pos=get(agent{cn},'pos');
         MESSAGES.pos(cn,:)=pos;                    
@@ -48,10 +41,6 @@ for cn=1:temp_n
         IT_STATS.huddleNum(N_IT+1)= MESSAGES.HuddleNum;
         MESSAGES.dead(cn)=0;           %clear death message
          nn=nn+1;
-    else                                %agent has died
-        MESSAGES.pos(cn,:)=[-1 -1];     %enter dummy position in list
-        MESSAGES.atype(cn)=0;           %set type to dead
-        MESSAGES.dead(cn)=0;            %clear death message
-    end
+   
 end
 IT_STATS.tot(N_IT+1)=nn;                %update total agent number
