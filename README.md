@@ -24,6 +24,8 @@ The third line chart show the average temperature of penguins with iteration.<br
 Here is the result at the start and end stage.<br/>
 ![image2](https://user-images.githubusercontent.com/57352059/112485110-87179a00-8db5-11eb-9aa6-411e1ea2d754.png)
 
+## Supplementary Materials:
+A video of a model runthrough can be found at the following link: https://www.youtube.com/watch?v=ivfYs57Rriw
 
 ## Acknowledgements
 Thanks for Dawn C Walker provided the ecolab code to support us investigate agent-based model.
