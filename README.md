@@ -8,8 +8,15 @@ This model is intended to investigate how environment temperature affect the pen
 To run modified model:<br/>
 
 ```
-ecolab(The size of environment,The number of penguins,The numbers of iteration,The value of environment temperature, True/False of fast mode,True/False of out image mode)
+ecolab(size,np,nsteps,temperature,fmode,outImages)
 ```
+size = The size of environment<br/> 
+np = The number of penguins<br/> 
+nsteps = The numbers of iteration<br/> 
+temperature = The value of environment temperature<br/> 
+fmode = True/False of fast mode<br/> 
+outImages = True/False of out image mode)
+
 For instance,
 ```
 ecolab(100,10,200,-20,true,true)
